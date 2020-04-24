@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Landing from './Components/Landing/Landing';
+import Home from './Components/Home/Home';
 
-//Desktop components
-const Home = React.lazy(() => import('./Components/Home/Home'));
+//Desktop components lazy loading
+
 //
 
-//Mobile components
+//Mobile components lazy loading
 
 //
 
