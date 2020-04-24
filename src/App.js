@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Router } from "react-router-dom";
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import store from './redux/store/store';
+import Spinner from './Components/Spinner/Spinner';
+import MainRouter from './MainRouter';
+
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
+
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router history={history}>
+          <React.Suspense fallback={<Spinner />}>
+            <MainRouter />
+          </React.Suspense>
+        </Router>
+      </Provider>
+    )
+  }
 }
-
-export default App;
