@@ -12,6 +12,6 @@ export default class Nav extends Component {
 }
 
 const main = css`
-    height: 10vh;
+    height: 7vh;
     width: 100vw;
 `
