@@ -4,6 +4,7 @@ import { css } from 'emotion';
 import Nav from '../Nav/Nav';
 import mainBG from '../../images/ancient-bg.jpg';
 import scroll from '../../images/scroll.png';
+import SignupInput from './Input';
 
 class Signup extends Component {
     render() {
@@ -14,7 +15,35 @@ class Signup extends Component {
                 <div className={main}>
                     <div className={centerSection}>
                         <div className={scrollInterior}>
+                            <SignupInput
+                                inputID="name"
+                                inputName="name"
+                                inputType="text"
+                                inputPlaceholder="Name"
+                            />
 
+                            <SignupInput
+                                inputID="email"
+                                inputName="email"
+                                inputType="text"
+                                inputPlaceholder="Email Address"
+                            />
+
+                            <SignupInput
+                                inputID="password1"
+                                inputName="password1"
+                                inputType="password"
+                                inputPlaceholder="Password"
+                            />
+
+                            <SignupInput
+                                inputID="password2"
+                                inputName="password2"
+                                inputType="password"
+                                inputPlaceholder="Confirm Password"
+                            />
+
+                            <button type="button" className={signupButton}>Sign Up</button>
                         </div>
                     </div>
                 </div>
@@ -47,7 +76,23 @@ const centerSection = css`
     background-position: center;
 `
 const scrollInterior = css`
-    border: 2px solid black;
     height: 75%;
     margin: 11% 19% 0 17%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+const signupButton = css`
+    border: 2px solid darkgreen;
+    background-color: olivedrab;
+    color: white;
+    font-weight: bold;
+    height: 7vh;
+    width: 15vw;
+    border-radius: 5px;
+    font-family: fantasy;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 3vh;
+    box-shadow: 3px 3px black;
 `
