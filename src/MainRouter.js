@@ -4,7 +4,7 @@ import Landing from './Components/Landing/Landing';
 import Home from './Components/Home/Home';
 
 //Desktop components lazy loading
-
+const Signup = React.lazy(() => import('./Components/Signup/Signup'));
 //
 
 //Mobile components lazy loading
@@ -20,6 +20,7 @@ export default class MainRouter extends Component {
                         <Switch>
                             <Route exact path="/" component={Landing} />
                             <Route exact path="/home" component={Home} />
+                            <Route exact path="/signup" component={Signup} />
 
                             <Route render={() => <h1 style={{ height: '84vh' }}>Component Not found</h1>} />
                         </Switch>
