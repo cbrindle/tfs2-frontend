@@ -2,13 +2,26 @@ import React, { Component } from 'react';
 import { css } from 'emotion';
 import bgImage from '../../images/title-bg.jpg';
 import titleText from '../../images/logo-text.png';
+import { slide as Menu } from 'react-burger-menu';
+import { Link } from 'react-router-dom';
 
 export default class Nav extends Component {
     render() {
         return (
             <div className={main}>
                 <div className={leftSection}>
-
+                    <Menu>
+                        <p style={{ fontWeight: "bold" }}>Navigation Menu</p>
+                        <hr />
+                        <br />
+                        <Link to="/home" className={menuLink}>Home</Link>
+                        <br />
+                        <Link to="/signup" className={menuLink}>Sign Up</Link>
+                        <br />
+                        <Link to="/about" className={menuLink}>About</Link>
+                        <br />
+                        <Link to="/contact" className={menuLink}>Contact Us</Link>
+                    </Menu>
                 </div>
 
                 <div className={centerSection}>
@@ -49,4 +62,9 @@ const rightSection = css`
 const titleTextStyle = css`
     height: 80%;
     width: 80%;
+`
+const menuLink = css`
+    color: white;
+    text-decoration: none;
+    font-family: fantasy;
 `
