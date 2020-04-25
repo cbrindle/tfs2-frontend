@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { css } from 'emotion';
 import Nav from '../../Components/Nav/Nav';
 import bgImage from '../../images/homeBG.jpg';
@@ -68,7 +69,8 @@ export default class Home extends Component {
                     </div>
 
                     <div id="signUp" className={signUpSection}>
-
+                        <p style={{ fontSize: "2em", color: 'white' }}>Sign up for a <b>FREE</b> account today an embark on your journey!</p>
+                        <Link to="/signup"><button type="button" className={signUpButton}>Sign Up</button></Link>
                     </div>
                 </div>
             </>
@@ -143,4 +145,22 @@ const signUpSection = css`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: fantasy;
+`
+const signUpButton = css`
+    height: 10vh;
+    width: 30vw;
+    background-color: olivedrab;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    border: 2px solid darkgreen;
+    border-radius: 5px;
+    font-family: fantasy;
+    cursor: pointer;
+    box-shadow: 3px 3px black;
 `
