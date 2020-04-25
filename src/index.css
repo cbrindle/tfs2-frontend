@@ -22,6 +22,16 @@ code {
   to    { left: 39%; top: 28%; transform: scale(1.5); transform: 3s; }
 }
 
+@keyframes battleFadeOut {
+  from  { opacity: 1; }
+  to    { opacity: 0.2; }
+}
+
+@keyframes battleFadeInAnimation {
+  from  { opacity: 0.2; }
+  to    { opacity: 1; }
+}
+
 .gameLogo {
     position: absolute;
     left: 70%;
@@ -32,5 +42,15 @@ code {
 
 .logoCenter {
   animation: centerLogo 3s;
+  animation-fill-mode: forwards;
+}
+
+.battleFade {
+  animation: battleFadeOut 1s;
+  animation-fill-mode: forwards;
+}
+
+.battleFadeIn {
+  animation: battleFadeInAnimation 1s;
   animation-fill-mode: forwards;
 }

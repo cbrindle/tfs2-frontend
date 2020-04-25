@@ -6,18 +6,34 @@ import bgImage2 from '../../images/dragon-battle.jpg';
 import bgImage3 from '../../images/hero-sec4.jpg';
 import subtleRanger from '../../images/subtle-ranger.png';
 import subtleBG from '../../images/subtle-bg.jpg';
+import darkForest from '../../images/darkForest.jpg';
 import Card from './Card'
 import forest from '../../images/forest1.jpg';
 import desert from '../../images/desert1.jpg';
 import mountains from '../../images/mountains.jpg';
 
 export default class Home extends Component {
+
+    bottomCheck = () => {
+        const section = document.querySelector(`#signUp`);
+        const check = section.getBoundingClientRect().height + section.getBoundingClientRect().top;
+        if (check === window.innerHeight) {
+            console.log(`BOTTOM!`);
+            document.querySelector(`#battle`).classList.remove('battleFadeIn');
+            document.querySelector(`#battle`).classList.add('battleFade');
+        } else {
+            document.querySelector(`#battle`).classList.remove('battleFade');
+            document.querySelector(`#battle`).classList.add('battleFadeIn');
+        }
+    }
+
+
     render() {
         return (
             <>
                 <Nav />
 
-                <div className={main}>
+                <div className={main} onScroll={this.bottomCheck}>
                     <div className={titleSection}>
                         {/* BLANK */}
                     </div>
@@ -47,11 +63,11 @@ export default class Home extends Component {
                         />
                     </div>
 
-                    <div className={battleSection}>
+                    <div id="battle" className={battleSection}>
                         {/* BLANK */}
                     </div>
 
-                    <div className={signUpSection}>
+                    <div id="signUp" className={signUpSection}>
 
                     </div>
                 </div>
@@ -89,8 +105,9 @@ const descriptionSection = css`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 1.6em;
+    font-size: 1.7em;
     font-family: fantasy;
+    text-align: center;
     color: white;
 `
 const dragonSection = css`
@@ -122,5 +139,8 @@ const battleSection = css`
 const signUpSection = css`
     height: 45vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(to bottom, rgba(50, 50, 50, 1), rgba(50, 50, 50, 0)), url('${darkForest}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 `
