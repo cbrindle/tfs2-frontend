@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
+import { Link } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import bgImage from '../../images/instructionsBG.jpg';
 import instructionsText from '../../images/instructions.png';
@@ -246,6 +247,8 @@ class Instructions extends Component {
                             </ul>
                         </div>
                     </div>
+
+                    <Link to="/game">Back to Game Menu</Link>
                 </div>
             </>
         )

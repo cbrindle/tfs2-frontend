@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
+import { Link } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import bgImage from '../../images/instructionsBG.jpg';
 import menuText from '../../images/game-menu-text.png';
@@ -31,6 +32,10 @@ class Game extends Component {
                 <div className={main}>
                     <div className={menuLeft}>
                         <img src={menuText} alt="Game Menu" />
+                        <span style={{ marginTop: '10vh' }}></span>
+
+                        <Link to="/" className={gameLink}>Launch Game</Link>
+                        <Link to="/game/instructions" className={gameLink}>Play Instructions</Link>
                     </div>
 
                     <div className={menuRight}>
@@ -76,4 +81,13 @@ const menuRight = css`
     align-items: center;
     justify-content: center;
     margin-top: 5vh;
+`
+const gameLink = css`
+    color: blue;
+    font-weight: bold;
+    font-family: fantasy;
+    font-size: 1.7em;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 5vh;
 `
