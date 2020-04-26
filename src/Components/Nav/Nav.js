@@ -62,7 +62,7 @@ class Nav extends Component {
 
                 <div className={rightSection}>
                     {this.props.auth.isAuth &&
-                        <p style={{ marginRight: '3vw' }}>Welcome home <span style={{ fontFamily: 'Times' }}>{this.props.auth.name}</span></p>
+                        <p style={{ marginRight: '3vw', color: '#2352d3' }}>Welcome home <span style={{ fontFamily: 'Times' }}>{this.props.auth.name}</span></p>
                     }
                 </div>
             </div>
