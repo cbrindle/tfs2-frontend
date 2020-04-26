@@ -5,16 +5,30 @@ import Nav from '../Nav/Nav';
 import mainBG from '../../images/ancient-bg.jpg';
 import scroll from '../../images/scroll.png';
 import SignupInput from './Input';
+import Notifications, { notify } from 'react-notify-toast';
 
 import { signUp } from '../../redux/actions/authActions';
 
 class Signup extends Component {
 
     handleSignUp = async () => {
-        if (document.querySelector(`#password1`).value !== document.querySelector(`#password2`).value) {
-            console.log(`Passwords do not match`);
+        if (document.querySelector(`#name`).value === '') {
+            notify.show("Name field must be filled in", "error", 3000);
+            return
+        } else if (document.querySelector(`#email`).value === '') {
+            notify.show("Email field must be filled in", "error", 3000);
+            return
+        } else if (!document.querySelector(`#email`).value.includes('@')) {
+            notify.show("Please enter a valid email address", "error", 3000)
+            return
+        } else if (document.querySelector(`#password1`).value === '' || document.querySelector(`#password2`).value === '') {
+            notify.show("Both password fields must be filled in", "error", 3000);
+            return
+        } else if (document.querySelector(`#password1`).value !== document.querySelector(`#password2`).value) {
+            notify.show("Both passwords MUST match", 3000);
             return
         }
+
         const data = {
             name: document.querySelector(`#name`).value,
             email: document.querySelector(`#email`).value,
@@ -22,7 +36,11 @@ class Signup extends Component {
         }
         try {
             const success = await this.props.signUp(data);
-            console.log(success);
+            notify.show(`Account successfully created for ${success.newUser.name}. Redirecting to Log In page...`, "success", 3000);
+            setInterval(() => {
+                this.props.history.push('/signin');
+            }, 3200);
+            return
         } catch (err) {
             console.log(err);
         }
@@ -35,6 +53,8 @@ class Signup extends Component {
                 <Nav />
 
                 <div className={main}>
+                    <Notifications />
+
                     <div className={centerSection}>
                         <div className={scrollInterior}>
                             <SignupInput

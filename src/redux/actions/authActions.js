@@ -12,6 +12,7 @@ export const signUp = (data) => async dispatch => {
             type: SIGNUP,
             payload: success.data
         });
+        return success.data
     } catch (err) {
         return err
     }
