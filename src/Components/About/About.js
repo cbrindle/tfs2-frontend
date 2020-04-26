@@ -4,10 +4,16 @@ import { css } from 'emotion';
 import Nav from '../Nav/Nav';
 
 class About extends Component {
+
+    homeRedirect = () => {
+        this.props.history.push('/home');
+    }
+
+
     render() {
         return (
             <>
-                <Nav />
+                <Nav goHome={this.homeRedirect} />
 
                 <div className={main}>
                     About

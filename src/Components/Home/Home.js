@@ -28,11 +28,15 @@ export default class Home extends Component {
         }
     }
 
+    homeRedirect = () => {
+        this.props.history.push('/home');
+    }
+
 
     render() {
         return (
             <>
-                <Nav />
+                <Nav goHome={this.homeRedirect} />
 
                 <div className={main} onScroll={this.bottomCheck}>
                     <div className={titleSection}>
