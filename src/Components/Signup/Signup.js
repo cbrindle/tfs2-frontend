@@ -9,6 +9,26 @@ import SignupInput from './Input';
 import { signUp } from '../../redux/actions/authActions';
 
 class Signup extends Component {
+
+    handleSignUp = async () => {
+        if (document.querySelector(`#password1`).value !== document.querySelector(`#password2`).value) {
+            console.log(`Passwords do not match`);
+            return
+        }
+        const data = {
+            name: document.querySelector(`#name`).value,
+            email: document.querySelector(`#email`).value,
+            password: document.querySelector(`#password1`).value
+        }
+        try {
+            const success = await this.props.signUp(data);
+            console.log(success);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+
     render() {
         return (
             <>
@@ -45,7 +65,7 @@ class Signup extends Component {
                                 inputPlaceholder="Confirm Password"
                             />
 
-                            <button type="button" className={signupButton}>Sign Up</button>
+                            <button type="button" className={signupButton} onClick={this.handleSignUp}>Sign Up</button>
                         </div>
                     </div>
                 </div>
