@@ -21,13 +21,23 @@ export const signUp = (data) => async dispatch => {
 
 export const login = (data) => async dispatch => {
     try {
-        const success = Axios.post('/api/users/login', data);
+        const success = await Axios.post('/api/users/login', data);
+        console.log(success);
+        const { token } = success.data
+        setAuthToken(token);
+        localStorage.setItem('jwt-user-token', token);
         dispatch({
             type: LOGIN,
             payload: success.data
         });
+        return {
+            error: false
+        }
     } catch (err) {
-        return err
+        console.log(err);
+        return {
+            error: true
+        }
     }
 }
 

@@ -12,7 +12,10 @@ export default function (state = initialState, action) {
 
         case LOGIN:
             return {
-                ...state
+                ...state,
+                isAuth: true,
+                name: action.payload.name,
+                email: action.payload.email
             }
 
         case LOGOUT:

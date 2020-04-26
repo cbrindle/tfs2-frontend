@@ -6,16 +6,56 @@ import mainBG from '../../images/ancient-bg.jpg';
 import scroll from '../../images/scroll.png';
 import SignupInput from '../Signup/Input';
 import { Link } from 'react-router-dom';
+import Notifications, { notify } from 'react-notify-toast';
 
 import { login } from '../../redux/actions/authActions';
 
 class Signin extends Component {
+
+    state = {
+        email: '',
+        password: ''
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.id]: event.target.value
+        })
+        console.log(this.state);
+    }
+
+    handleLogIn = async (data) => {
+        try {
+            const success = await this.props.login(data);
+            if (success.error === true) {
+                throw new Error();
+            }
+            notify.show("Logged in successfully! Redirecting to game...", "success", 2000);
+            setTimeout(() => {
+                this.props.history.push('/game');
+            }, 2500);
+            return
+        } catch (err) {
+            notify.show("Invalid Email / Password. Please try again.", "error", 2500);
+            document.querySelector(`#email`).value = '';
+            document.querySelector(`#password`).value = '';
+            this.setState({
+                email: '',
+                password: ''
+            })
+            return
+        }
+    }
+
+
     render() {
         return (
             <>
                 <Nav />
 
                 <div className={main}>
+                    <Notifications />
+
                     <div className={centerSection}>
                         <div className={scrollInterior}>
                             <SignupInput
@@ -23,15 +63,17 @@ class Signin extends Component {
                                 inputName="email"
                                 inputType="text"
                                 inputPlaceholder="Email Address"
+                                inputChange={this.handleChange}
                             />
 
                             <SignupInput
-                                inputID="password1"
-                                inputName="password1"
+                                inputID="password"
+                                inputName="password"
                                 inputType="password"
                                 inputPlaceholder="Password"
+                                inputChange={this.handleChange}
                             />
-                            <button type="button" className={signupButton}>Submit</button>
+                            <button type="button" className={signupButton} onClick={() => this.handleLogIn(this.state)}>Submit</button>
                             <Link to="/password-recovery" className={passLink}>Forgot Your Password?</Link>
                         </div>
                     </div>
@@ -92,4 +134,5 @@ const passLink = css`
     text-decoration: none;
     font-size: 1.1em;
     font-weight: bold;
+    font-family: fantasy;
 `

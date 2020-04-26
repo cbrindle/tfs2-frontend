@@ -36,11 +36,10 @@ class Signup extends Component {
         }
         try {
             const success = await this.props.signUp(data);
-            notify.show(`Account successfully created for ${success.newUser.name}. Redirecting to Log In page...`, "success", 3000);
-            setInterval(() => {
+            notify.show(`Account successfully created for ${success.newUser.name}. Redirecting to Log In page...`, "success", 2000);
+            setTimeout(() => {
                 this.props.history.push('/signin');
-            }, 3200);
-            return
+            }, 2500);
         } catch (err) {
             console.log(err);
         }
