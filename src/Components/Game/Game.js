@@ -23,7 +23,6 @@ class Game extends Component {
         this.props.history.push('/home');
     }
 
-
     render() {
         return (
             <>
@@ -34,7 +33,7 @@ class Game extends Component {
                         <img src={menuText} alt="Game Menu" />
                         <span style={{ marginTop: '10vh' }}></span>
 
-                        <Link to="/" className={gameLink}>Launch Game</Link>
+                        <p className={gameLink}>Launch Game</p>
                         <Link to="/game/instructions" className={gameLink}>Play Instructions</Link>
                     </div>
 
