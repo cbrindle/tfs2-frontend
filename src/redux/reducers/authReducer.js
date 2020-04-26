@@ -1,7 +1,9 @@
 import { LOGIN, LOGOUT, SIGNUP } from '../constants/authConstants';
 
 const initialState = {
-
+    isAuth: false,
+    name: '',
+    email: ''
 }
 
 export default function (state = initialState, action) {
@@ -15,12 +17,15 @@ export default function (state = initialState, action) {
 
         case LOGOUT:
             return {
-                ...state
+                ...state,
+                isAuth: false,
+                name: '',
+                email: ''
             }
 
         case SIGNUP:
             return {
-                ...state
+                ...state,
             }
 
         default:

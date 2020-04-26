@@ -6,6 +6,8 @@ import mainBG from '../../images/ancient-bg.jpg';
 import scroll from '../../images/scroll.png';
 import SignupInput from './Input';
 
+import { signUp } from '../../redux/actions/authActions';
+
 class Signup extends Component {
     render() {
         return (
@@ -56,7 +58,7 @@ const mapStateToProps = state => ({
     auth: state.authReducer
 })
 
-export default connect(mapStateToProps, {})(Signup)
+export default connect(mapStateToProps, { signUp })(Signup)
 
 
 
