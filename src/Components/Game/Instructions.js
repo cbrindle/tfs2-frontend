@@ -6,6 +6,7 @@ import bgImage from '../../images/instructionsBG.jpg';
 import instructionsText from '../../images/instructions.png';
 import village from '../../images/fantasy-village1.jpg';
 import controls from '../../images/controls.png';
+import combat from '../../images/combat-basics.png';
 
 class Instructions extends Component {
 
@@ -23,7 +24,7 @@ class Instructions extends Component {
                         <p>Tales from Swiftfell is a fantasy role-playing game built in the style of a classic 16bit console video game. TFS uses the latest RPG Maker MV software, a development tool which utilizes Javascript that is simple enough for a child, but powerful enough for a developer. TFS is designed to run directly from your web browser, meaning no downloads, no installations, just adventure!</p>
                     </div>
 
-                    <div className={welcomeSection}>
+                    <div className={leftSection}>
                         <div className={textLeft}>
                             <p>An unassuming, humble farming town, Swiftfell Village lies nestled among the southern foothills of the Sundirra Realm. Most who reside within the walls of Swiftfell spend their day cultivating the land and selling their crops to merchant caravans passing through towards the capital. At first glance, the quaint hamlet appears as unremarkable as one would assume. However, Swiftfell has been home of the fabled Hero's Academy for hundreds of years. Here, would-be champions of peace are separated from those simply filled with delusions of grandeur.</p>
 
@@ -36,7 +37,7 @@ class Instructions extends Component {
                         </div>
                     </div>
 
-                    <div className={controlsSection}>
+                    <div className={rightSection}>
                         <div className={imageLeft}>
                             <img src={controls} style={{ width: '90%', marginRight: '20%' }} alt="Controls" />
                         </div>
@@ -52,6 +53,29 @@ class Instructions extends Component {
                             <p><b>Shift (Hold):</b> Dash. Hold down the Shift key to move at Dash speed. Note that all maps, like the Overworld, do not allow your Hero to dash.</p>
 
                             <p><b>Mouse Click or Screen Touch:</b> Click, or touch if playing on a mobile device, to move your Hero to the specified location, interact with an NPC or object, or confirm menu selection.</p>
+                        </div>
+                    </div>
+
+                    <div className={leftSection}>
+                        <div className={textLeft}>
+                            <center><h1><b><u>Combat Basics</u></b></h1></center>
+                            <br />
+                            <p><b>Turn-Based Combat:</b> TFS utilizes a turn-based combat system. At the start of a combat turn, you select an action for each of your party members. Once all selections have been made, an agility stat calculation is made to determine the order of actions carried out.</p>
+
+                            <p><b>Attack:</b> Using your Hero's equipped weapon, attack a selected target to deal damage. Classes that have strong Attack ability are Hero and Warrior.</p>
+
+                            <p><b>Guard:</b> Your Hero takes up a defensive posture and guards against any incoming physical attack that round. Typically, the damage your Hero would have taken is reduced by 50%.</p>
+
+                            <p><b>Magic:</b> Select a spell to cast that round. A spell may deal damage, heal a Hero, grant a status buff, or inflict a status aliment on an enemy.</p>
+
+                            <p><b>Special:</b> Every combat action your Hero takes earns him/her Technique Points. Special moves cost various Technique Points and, like spells, can have varying effects depending on the Hero's class.</p>
+
+                            <p><b>Item:</b> Use an item from your inventory in combat. An item may restore a Hero's Hit Points or Magic Points, cure status aliments, or have some other effect.</p>
+
+                            <p><b>Escape:</b> Allows your party to flee battle. This is best to use if your Heroes are running low on HP or if an enemy is too strong.</p>
+                        </div>
+                        <div className={imageRight}>
+                            <img src={combat} style={{ width: '90%', marginLeft: '10%' }} alt="Combat Basics" />
                         </div>
                     </div>
                 </div>
@@ -89,11 +113,12 @@ const titleSection = css`
     text-align: center;
     font-weight: bold;
 `
-const welcomeSection = css`
+const leftSection = css`
     width: 90vw;
     display: grid;
     grid-template-columns: 60% 40%;
     grid-template-rows: 100%;
+    margin-bottom: 5vh;
 `
 const textLeft = css`
     grid-area: 1 / 1 / span 1 / span 1;
@@ -121,9 +146,10 @@ const imageRight = css`
     align-items: center;
     justify-content: center;
 `
-const controlsSection = css`
+const rightSection = css`
     width: 90vw;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 100%;
+    margin-bottom: 5vh;
 `
