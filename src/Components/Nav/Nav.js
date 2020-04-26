@@ -102,7 +102,7 @@ const rightSection = css`
     font-size: 1.1em;
 `
 const titleTextStyle = css`
-    height: 80%;
+    height: 70%;
     width: 80%;
 `
 const menuLink = css`
