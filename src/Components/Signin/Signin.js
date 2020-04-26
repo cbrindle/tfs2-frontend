@@ -7,6 +7,7 @@ import scroll from '../../images/scroll.png';
 import SignupInput from '../Signup/Input';
 import { Link } from 'react-router-dom';
 import Notifications, { notify } from 'react-notify-toast';
+import enterImg from '../../images/enter-logo.png';
 
 import { login } from '../../redux/actions/authActions';
 
@@ -72,7 +73,7 @@ class Signin extends Component {
                                 inputPlaceholder="Password"
                                 inputChange={this.handleChange}
                             />
-                            <button type="button" className={signupButton} onClick={() => this.handleLogIn(this.state)}>Submit</button>
+                            <img src={enterImg} className={submitButton} onClick={() => this.handleLogIn(this.state)} alt="Enter Button" />
                             <Link to="/password-recovery" className={passLink}>Forgot Your Password?</Link>
                         </div>
                     </div>
@@ -113,19 +114,9 @@ const scrollInterior = css`
     align-items: center;
     justify-content: center;
 `
-const signupButton = css`
-    border: 2px solid darkgreen;
-    background-color: olivedrab;
-    color: white;
-    font-weight: bold;
-    height: 7vh;
-    width: 15vw;
-    border-radius: 5px;
-    font-family: fantasy;
-    font-size: 1em;
+const submitButton = css`
     cursor: pointer;
-    margin-top: 3vh;
-    box-shadow: 3px 3px black;
+    width: 70%;
 `
 const passLink = css`
     margin-top: 2vh;
