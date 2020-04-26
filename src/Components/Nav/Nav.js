@@ -16,6 +16,8 @@ export default class Nav extends Component {
                         <br />
                         <Link to="/home" className={menuLink}>Home</Link>
                         <br />
+                        <Link to="/signin" className={menuLink}>Log In</Link>
+                        <br />
                         <Link to="/signup" className={menuLink}>Sign Up</Link>
                         <br />
                         <Link to="/about" className={menuLink}>About</Link>
