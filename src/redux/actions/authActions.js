@@ -1,5 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import { LOGIN, LOGOUT, SIGNUP, AUTHCHECKER } from '../constants/authConstants';
+import { LOGIN, LOGOUT, SIGNUP, AUTHCHECKER, GETPROFILE } from '../constants/authConstants';
 
 import Axios from '../../Components/lib/Axios/Axios';
 import setAuthToken from '../../Components/lib/Axios/setAuthToken';
@@ -64,5 +64,21 @@ export const authChecker = (data) => async dispatch => {
         })
     } catch (err) {
 
+    }
+}
+
+
+export const getProfile = () => async dispatch => {
+    try {
+        const token = localStorage.getItem('jwt-user-token');
+        const decoded = jwt_decode(token);
+        const success = await Axios.get(`/api/users/get-profile/${decoded.id}`);
+        dispatch({
+            type: GETPROFILE,
+            payload: ''
+        })
+        return success.data;
+    } catch (err) {
+        return err
     }
 }

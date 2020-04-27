@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, SIGNUP, AUTHCHECKER } from '../constants/authConstants';
+import { LOGIN, LOGOUT, SIGNUP, AUTHCHECKER, GETPROFILE } from '../constants/authConstants';
 
 const initialState = {
     isAuth: false,
@@ -37,6 +37,11 @@ export default function (state = initialState, action) {
                 isAuth: true,
                 email: action.payload.email,
                 name: action.payload.name
+            }
+
+        case GETPROFILE:
+            return {
+                ...state
             }
 
         default:
