@@ -2,7 +2,7 @@ import { LOGIN, LOGOUT, SIGNUP, AUTHCHECKER, GETPROFILE } from '../constants/aut
 
 const initialState = {
     isAuth: false,
-    name: '',
+    userName: '',
     email: ''
 }
 
@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isAuth: true,
-                name: action.payload.name,
+                userName: action.payload.userName,
                 email: action.payload.email
             }
 

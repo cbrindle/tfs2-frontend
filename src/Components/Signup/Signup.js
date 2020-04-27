@@ -12,8 +12,14 @@ import { signUp } from '../../redux/actions/authActions';
 class Signup extends Component {
 
     handleSignUp = async () => {
-        if (document.querySelector(`#name`).value === '') {
-            notify.show("Name field must be filled in", "error", 3000);
+        if (document.querySelector(`#firstName`).value === '') {
+            notify.show("First Name field must be filled in", "error", 3000);
+            return
+        } else if (document.querySelector(`#lastName`).value === '') {
+            notify.show("Last Name field must be filled in", "error", 3000);
+            return
+        } else if (document.querySelector(`#userName`).value === '') {
+            notify.show("User Name field must be filled in", "error", 3000);
             return
         } else if (document.querySelector(`#email`).value === '') {
             notify.show("Email field must be filled in", "error", 3000);
@@ -30,13 +36,15 @@ class Signup extends Component {
         }
 
         const data = {
-            name: document.querySelector(`#name`).value,
+            firstName: document.querySelector(`#firstName`).value,
+            lastName: document.querySelector(`#lastName`).value,
+            userName: document.querySelector(`#userName`).value,
             email: document.querySelector(`#email`).value,
             password: document.querySelector(`#password1`).value
         }
         try {
             const success = await this.props.signUp(data);
-            notify.show(`Account successfully created for ${success.newUser.name}. Redirecting to Log In page...`, "success", 2000);
+            notify.show(`Account successfully created for ${success.newUser.userName}. Redirecting to Log In page...`, "success", 2000);
             setTimeout(() => {
                 this.props.history.push('/signin');
             }, 2500);
@@ -57,10 +65,24 @@ class Signup extends Component {
                     <div className={centerSection}>
                         <div className={scrollInterior}>
                             <SignupInput
-                                inputID="name"
-                                inputName="name"
+                                inputID="firstName"
+                                inputName="firstName"
                                 inputType="text"
-                                inputPlaceholder="Name"
+                                inputPlaceholder="First Name"
+                            />
+
+                            <SignupInput
+                                inputID="lastName"
+                                inputName="lastName"
+                                inputType="text"
+                                inputPlaceholder="Last Name"
+                            />
+
+                            <SignupInput
+                                inputID="userName"
+                                inputName="userName"
+                                inputType="text"
+                                inputPlaceholder="User Name"
                             />
 
                             <SignupInput
@@ -85,6 +107,7 @@ class Signup extends Component {
                             />
 
                             <button type="button" className={signupButton} onClick={this.handleSignUp}>Sign Up</button>
+                            <br />
                         </div>
                     </div>
                 </div>
@@ -122,6 +145,7 @@ const scrollInterior = css`
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
 `
 const signupButton = css`
     border: 2px solid darkgreen;

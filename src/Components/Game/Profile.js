@@ -9,7 +9,9 @@ import { getProfile } from '../../redux/actions/authActions';
 class Profile extends Component {
 
     state = {
-        name: '',
+        userName: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: 'XXXXXXXX'
     }
@@ -26,7 +28,9 @@ class Profile extends Component {
 
         const data = await this.props.getProfile();
         this.setState({
-            name: data.name,
+            userName: data.userName,
+            firstName: data.firstName,
+            lastName: data.lastName,
             email: data.email
         })
     }
@@ -40,13 +44,17 @@ class Profile extends Component {
                 <div className={main}>
                     <div className={bookLeft}>
                         <div className={leftTop}>
-                            <h1 style={{ margin: '5vh 3vw 0 0' }}>{this.state.name}</h1>
+                            <h1 style={{ margin: '5vh 3vw 0 0' }}>{this.state.userName}</h1>
                         </div>
                         <div className={leftBottomLeft}>
+                            <p>First Name:</p>
+                            <p>Last Name:</p>
                             <p>Email:</p>
                             <p>Password:</p>
                         </div>
                         <div className={leftBottomRight}>
+                            <p>{this.state.firstName}</p>
+                            <p>{this.state.lastName}</p>
                             <p>{this.state.email}</p>
                             <p>{this.state.password}</p>
                         </div>

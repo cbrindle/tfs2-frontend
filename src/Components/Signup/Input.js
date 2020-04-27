@@ -13,11 +13,11 @@ export default class Input extends Component {
 
 const main = css`
     width: 20vw;
-    height: 5vh;
+    height: 4vh;
     border-radius: 1px solid gray;
     border-radius: 5px;
     font-family: fantasy;
-    font-size: 1em;
+    font-size: 0.9em;
     padding-left: 1vw;
     display: flex;
     align-items: center;
