@@ -35,6 +35,13 @@ class Profile extends Component {
         })
     }
 
+    profileFade = () => {
+        document.querySelector(`#bookRight`).classList.add('profileFadeOut');
+        setTimeout(() => {
+            document.querySelector(`#bookRight`).style.display = 'none';
+        }, 1500);
+    }
+
 
     render() {
         return (
@@ -42,7 +49,7 @@ class Profile extends Component {
                 <Nav goHome={this.homeRedirect} />
 
                 <div className={main}>
-                    <div className={bookLeft}>
+                    <div id="book" className={bookLeft}>
                         <div className={leftTop}>
                             <h1 style={{ margin: '5vh 3vw 0 0' }}>{this.state.userName}</h1>
                         </div>
@@ -52,14 +59,14 @@ class Profile extends Component {
                             <p>Email:</p>
                             <p>Password:</p>
                         </div>
-                        <div className={leftBottomRight}>
+                        <div id="bookRight" className={leftBottomRight}>
                             <p>{this.state.firstName}</p>
                             <p>{this.state.lastName}</p>
                             <p>{this.state.email}</p>
                             <p>{this.state.password}</p>
                         </div>
                         <div className={buttonSection}>
-                            <button type="button" className={changeButton}>Update Profile</button>
+                            <button id="updateButton" type="button" className={changeButton} onClick={this.profileFade}>Update Profile</button>
                         </div>
                     </div>
                 </div>
