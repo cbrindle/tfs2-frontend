@@ -248,7 +248,7 @@ class Instructions extends Component {
                         </div>
                     </div>
 
-                    <Link to="/game">Back to Game Menu</Link>
+                    <Link to="/game" className={instructionLink}>Back to Game Menu</Link>
                 </div>
             </>
         )
@@ -347,4 +347,12 @@ const charNameSec = css`
 const charDesSec = css`
     grid-area: 2 / 2 / span 1 / span 1;
     font-family: fantasy;
+`
+const instructionLink = css`
+    font-family: fantasy;
+    text-decoration: none;
+    color: blue;
+    font-size: 1.5em;
+    margin-bottom: 5vh;
+    font-weight: bold;
 `

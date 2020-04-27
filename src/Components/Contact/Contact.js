@@ -59,7 +59,3 @@ const contentMain = css`
     font-family: fantasy;
     padding: 0 5% 0 5%;
 `
-const contentBottom = css`
-    display: flex;
-    justify-content: space-evenly;
-`
