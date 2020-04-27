@@ -54,6 +54,7 @@ export const logout = () => async dispatch => {
     }
 }
 
+
 export const authChecker = (data) => async dispatch => {
     try {
         const decoded = jwt_decode(data);

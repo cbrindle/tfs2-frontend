@@ -23,6 +23,10 @@ class Game extends Component {
         this.props.history.push('/home');
     }
 
+    gameLaunch = async () => {
+        window.open('https://tfs-chapter1.herokuapp.com/game/launch');
+    }
+
     render() {
         return (
             <>
@@ -33,7 +37,7 @@ class Game extends Component {
                         <img src={menuText} alt="Game Menu" />
                         <span style={{ marginTop: '10vh' }}></span>
 
-                        <p className={gameLink}>Launch Game</p>
+                        <p className={gameLink} onClick={this.gameLaunch}>Launch Game</p>
                         <Link to="/game/instructions" className={gameLink}>Play Instructions</Link>
                     </div>
 
