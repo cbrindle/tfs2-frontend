@@ -48,8 +48,12 @@ class Nav extends Component {
                                 <br /><br />
                                 <Link to="/game/instructions" className={menuLink}>Game Instructions</Link>
                                 <br /><br />
+                                <Link to="/game/profile" className={menuLink}>Profile</Link>
+                                <br /><br />
+
                                 <hr />
                                 <br />
+
                                 <span className={menuLink} style={{ cursor: 'pointer' }} onClick={this.handleLogout}>Log Out</span>
                             </>
                         }

@@ -39,6 +39,7 @@ class Game extends Component {
 
                         <p className={gameLink} onClick={this.gameLaunch}>Launch Game</p>
                         <Link to="/game/instructions" className={gameLink}>Play Instructions</Link>
+                        <Link to="/game/profile" className={gameLink}>Profile</Link>
                     </div>
 
                     <div className={menuRight}>
