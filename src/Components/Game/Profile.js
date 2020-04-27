@@ -43,10 +43,15 @@ class Profile extends Component {
                             <h1 style={{ margin: '5vh 3vw 0 0' }}>{this.state.name}</h1>
                         </div>
                         <div className={leftBottomLeft}>
-
+                            <p>Email:</p>
+                            <p>Password:</p>
                         </div>
                         <div className={leftBottomRight}>
-
+                            <p>{this.state.email}</p>
+                            <p>{this.state.password}</p>
+                        </div>
+                        <div className={buttonSection}>
+                            <button type="button" className={changeButton}>Update Profile</button>
                         </div>
                     </div>
                 </div>
@@ -76,7 +81,7 @@ const bookLeft = css`
     grid-area: 2 / 2 / span 1 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 20% 65% 15%;
 `
 const leftTop = css`
     grid-area: 1 / 1 / span 1 / span 2;
@@ -87,8 +92,31 @@ const leftTop = css`
 const leftBottomLeft = css`
     grid-area: 2 / 1 / span 1 / span 1;
     font-family: fantasy;
-    
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 const leftBottomRight = css`
     grid-area: 2 / 2 / span 1 / span 1;
+    font-family: fantasy;
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+`
+const buttonSection = css`
+    grid-area: 3 / 1 / span 1 / span 2;
+    display: flex;
+    justify-content: center;
+`
+const changeButton = css`
+    height: 5vh;
+    width: 10vw;
+    border: 2px solid darkgreen;
+    background-color: olivedrab;
+    color: white;
+    font-family: fantasy;
+    border-radius: 5px;
+    cursor: pointer;
 `
