@@ -82,3 +82,17 @@ export const getProfile = () => async dispatch => {
         return err
     }
 }
+
+
+export const updateProfile = (data) => async dispatch => {
+    try {
+        const success = await Axios.post('/api/users/update-profile', data);
+        dispatch({
+            type: LOGIN,
+            payload: success.data
+        })
+        return success.data
+    } catch (err) {
+        return err
+    }
+}

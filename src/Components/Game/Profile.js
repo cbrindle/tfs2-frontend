@@ -4,7 +4,7 @@ import { css } from 'emotion';
 import Nav from '../Nav/Nav';
 import bgImage from '../../images/ledgerBG.jpg';
 
-import { getProfile } from '../../redux/actions/authActions';
+import { getProfile, updateProfile } from '../../redux/actions/authActions';
 
 class Profile extends Component {
 
@@ -13,7 +13,8 @@ class Profile extends Component {
         firstName: '',
         lastName: '',
         email: '',
-        password: 'XXXXXXXX'
+        password: 'XXXXXXXX',
+        update: false
     }
 
     homeRedirect = () => {
@@ -36,10 +37,49 @@ class Profile extends Component {
     }
 
     profileFade = () => {
+        this.setState({
+            update: true
+        })
         document.querySelector(`#bookRight`).classList.add('profileFadeOut');
-        setTimeout(() => {
-            document.querySelector(`#bookRight`).style.display = 'none';
-        }, 1500);
+        document.querySelector(`#bookRightInput`).style.display = 'inline';
+        document.querySelector(`#bookRightInput`).classList.add('battleFadeIn');
+        document.querySelector(`#changeButton`).style.display = 'inline';
+        document.querySelector(`#updateButton`).style.display = 'none';
+    }
+
+    handleUpdate = async () => {
+        if (document.querySelector(`#changeButton`).style.display !== 'none') {
+            const data = {
+                newFirstName: document.querySelector(`#updateFirstName`).value,
+                newLastName: document.querySelector(`#updateLastName`).value,
+                newEmail: document.querySelector(`#updateEmail`).value,
+                newPassword: document.querySelector(`#updatePassword`).value,
+                email: this.state.email
+            }
+            try {
+                const success = await this.props.updateProfile(data);
+                this.setState({
+                    userName: success.userName,
+                    firstName: success.firstName,
+                    lastName: success.lastName,
+                    email: success.email,
+                    update: false
+                })
+                document.querySelector(`#bookRight`).classList.remove('profileFadeOut');
+                document.querySelector(`#bookRight`).classList.add('battleFadeIn');
+                document.querySelector(`#bookRightInput`).classList.remove('battleFadeIn');
+                document.querySelector(`#bookRightInput`).style.display = 'none';
+                document.querySelector(`#changeButton`).style.display = 'none';
+                document.querySelector(`#updateButton`).style.display = 'inline';
+
+                document.querySelector(`#updateFirstName`).value = '';
+                document.querySelector(`#updateLastName`).value = '';
+                document.querySelector(`#updateEmail`).value = '';
+                document.querySelector(`#updatePassword`).value = '';
+            } catch (err) {
+                console.log(err);
+            }
+        }
     }
 
 
@@ -65,8 +105,19 @@ class Profile extends Component {
                             <p>{this.state.email}</p>
                             <p>{this.state.password}</p>
                         </div>
+                        <div id="bookRightInput" className={leftBottomRight} style={{ display: 'none' }}>
+                            <p><input id="updateFirstName" className={inputUpdate} style={{ marginBottom: '3.3vh' }} type="text" placeholder="First Name"></input></p>
+                            <p><input id="updateLastName" className={inputUpdate} style={{ marginBottom: '3.5vh' }} type="text" placeholder="Last Name"></input></p>
+                            <p><input id="updateEmail" className={inputUpdate} style={{ marginBottom: '3.5vh' }} type="text" placeholder="Email Address"></input></p>
+                            <p><input id="updatePassword" className={inputUpdate} type="password" placeholder="New Password"></input></p>
+                        </div>
                         <div className={buttonSection}>
-                            <button id="updateButton" type="button" className={changeButton} onClick={this.profileFade}>Update Profile</button>
+                            <button id="updateButton" type="button" className={changeButton} onClick={this.profileFade}>
+                                Update Profile
+                            </button>
+                            <button id="changeButton" style={{ display: 'none' }} type="button" className={changeButton} onClick={this.handleUpdate}>
+                                Submit Changes
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -79,7 +130,7 @@ const mapStateToProps = state => ({
     auth: state.authReducer
 })
 
-export default connect(mapStateToProps, { getProfile })(Profile)
+export default connect(mapStateToProps, { getProfile, updateProfile })(Profile)
 
 
 
@@ -134,4 +185,11 @@ const changeButton = css`
     font-family: fantasy;
     border-radius: 5px;
     cursor: pointer;
+    text-algin: center;
+`
+const inputUpdate = css`
+    height: 3vh;
+    width: 15vw;
+    border-radius: 5px;
+    box-shadow: 2px 2px black;
 `
