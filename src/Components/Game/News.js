@@ -10,6 +10,9 @@ export default class News extends Component {
                 </div>
 
                 <div className={newsBottom}>
+                    <p><b>--- 27 April 2020 ---</b></p>
+                    <p style={{ marginTop: 0 }}>Happy Live Day! Today, the ver 1.0 build of the site was deployed on AWS and went live today. However, one thing I learned about web development is that a project is never truly done. With the site up and out in the world. a Profile section was created that allows a user to view their account details and edit them if they wish.</p>
+
                     <p><b>--- 26 April 2020 ---</b></p>
                     <p style={{ marginTop: 0 }}>Sunday funday… riiiiiight. All in all, I got a lot of work done on the site today. But for whatever reason, I was running into a major issue getting the user sign in functionality working. Everything was coming back from the server side without an issue. However, when I went to console.log the results of a successful login, my variable came back as undefined. After some digging around, I found the bug. After the dispatch middleware updated my state in Redux, I never returned any data to the function call. When my code went to see what came back, obviously there was nothing there.</p>
 

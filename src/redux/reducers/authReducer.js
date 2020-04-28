@@ -36,7 +36,7 @@ export default function (state = initialState, action) {
                 ...state,
                 isAuth: true,
                 email: action.payload.email,
-                name: action.payload.name
+                name: action.payload.userName
             }
 
         case GETPROFILE:
