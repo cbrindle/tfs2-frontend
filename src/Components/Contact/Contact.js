@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { css } from 'emotion';
 import Nav from '../Nav/Nav';
 import stageBG from '../../images/stageBG.jpg';
+import { FaLinkedin } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { BsBriefcaseFill } from 'react-icons/bs';
 
 class Contact extends Component {
 
@@ -19,12 +22,13 @@ class Contact extends Component {
                         <h1>Contact Us</h1>
                         <p style={{ textAlign: 'center' }}>Thank you for visiting Tales from Swiftfell. We hoped you enjoyed playing our game. If you have any questions, comments, want to report a bug, tell me the app is trash, or just want to say hi, you can use the below resources.</p>
                         <br />
+                        <span style={{ marginTop: '3vh' }}>
+                            <a href="mailto:cbrindleusa@gmail.com?subject=TFS Site Email"><MdEmail size={48} className={contactLink} color="black" /></a>
 
-                        <a href="mailto:cbrindleusa@gmail.com?subject=TFS Email">Email</a>
-                        <br />
-                        <a href="http://linkedin.com/in/christopherbrindle" target="__blank">LinkedIn</a>
-                        <br />
-                        <a href="http://hirebrindle.com" target="__blank">Portfolio Site</a>
+                            <FaLinkedin size={48} className={contactLink} color="blue" onClick={() => window.open('http://www.linkedin.com/in/christopherbrindle')} />
+
+                            <BsBriefcaseFill size={48} color="brown" className={contactLink} onClick={() => window.open('http://www.github.com/cbrindle')} />
+                        </span>
                     </div>
                 </div>
             </>
@@ -58,4 +62,8 @@ const contentMain = css`
     border-radius: 5px;
     font-family: fantasy;
     padding: 0 5% 0 5%;
+`
+const contactLink = css`
+    cursor: pointer;
+    margin: 0 3vw 0 3vw;
 `
