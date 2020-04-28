@@ -44,6 +44,12 @@ export default class MainRouter extends Component {
                         <Route render={() => <h1 style={{ height: '100vh' }}>Mobile components in production. Please check back later!</h1>} />
                     </>
                 }
+
+                {window.screen.orientation.type === 'portrait-primary' && window.screen.orientation.angle === 90 &&
+                    <>
+                        <Route render={() => <h1 style={{ height: '100vh' }}>Mobile components in production. Please check back later!</h1>} />
+                    </>
+                }
             </>
         )
     }

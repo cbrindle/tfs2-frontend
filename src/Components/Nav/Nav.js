@@ -13,7 +13,6 @@ class Nav extends Component {
     async componentDidMount() {
         const auth = localStorage.getItem('jwt-user-token');
         await this.props.authChecker(auth);
-        console.log(this.props.auth);
     }
 
     handleLogout = async () => {
@@ -27,7 +26,7 @@ class Nav extends Component {
             <div className={main}>
                 <div className={leftSection}>
                     <Menu>
-                        <p style={{ fontWeight: "bold" }}>Navigation Menu</p>
+                        <p style={{ fontWeight: 'bold' }}>Navigation Menu</p>
                         <hr />
                         <br />
                         <Link to="/home" className={menuLink}>Home</Link>
