@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { css } from 'emotion';
 import Nav from '../Nav/Nav';
 import stageBG from '../../images/stageBG.jpg';
-import { FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import { BsBriefcaseFill } from 'react-icons/bs';
 
 class Contact extends Component {
 
@@ -27,7 +26,7 @@ class Contact extends Component {
 
                             <FaLinkedin size={48} className={contactLink} color="blue" onClick={() => window.open('http://www.linkedin.com/in/christopherbrindle')} />
 
-                            <BsBriefcaseFill size={48} color="brown" className={contactLink} onClick={() => window.open('http://www.github.com/cbrindle')} />
+                            <FaGithub size={48} color="brown" className={contactLink} onClick={() => window.open('http://www.github.com/cbrindle')} />
                         </span>
                     </div>
                 </div>
