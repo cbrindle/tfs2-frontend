@@ -45,11 +45,15 @@ class Profile extends Component {
         document.querySelector(`#bookRightInput`).classList.add('battleFadeIn');
         document.querySelector(`#changeButton`).style.display = 'inline';
         document.querySelector(`#updateButton`).style.display = 'none';
+        document.querySelector(`#userSection`).style.display = 'none';
+        document.querySelector(`#userSectionUpdate`).style.display = 'flex';
+        document.querySelector(`#userSectionUpdate`).classList.add('battleFadeIn');
     }
 
     handleUpdate = async () => {
         if (document.querySelector(`#changeButton`).style.display !== 'none') {
             const data = {
+                newUserName: document.querySelector(`#updateUserName`).value,
                 newFirstName: document.querySelector(`#updateFirstName`).value,
                 newLastName: document.querySelector(`#updateLastName`).value,
                 newEmail: document.querySelector(`#updateEmail`).value,
@@ -71,7 +75,13 @@ class Profile extends Component {
                 document.querySelector(`#bookRightInput`).style.display = 'none';
                 document.querySelector(`#changeButton`).style.display = 'none';
                 document.querySelector(`#updateButton`).style.display = 'inline';
+                document.querySelector(`#userSection`).style.display = 'flex';
+                document.querySelector(`#userSection`).classList.add('battleFadeIn');
+                document.querySelector(`#userSectionUpdate`).classList.remove('battleFadeIn');
+                document.querySelector(`#userSectionUpdate`).classList.add('battleFadeOut');
+                document.querySelector(`#userSectionUpdate`).style.display = 'none';
 
+                document.querySelector(`#updateUserName`).value = '';
                 document.querySelector(`#updateFirstName`).value = '';
                 document.querySelector(`#updateLastName`).value = '';
                 document.querySelector(`#updateEmail`).value = '';
@@ -90,8 +100,11 @@ class Profile extends Component {
 
                 <div className={main}>
                     <div id="book" className={bookLeft}>
-                        <div className={leftTop}>
+                        <div id="userSection" className={leftTop}>
                             <h1 style={{ margin: '5vh 3vw 0 0' }}>{this.state.userName}</h1>
+                        </div>
+                        <div id="userSectionUpdate" className={leftTop} style={{ display: 'none' }}>
+                            <p><input id="updateUserName" className={inputUpdate} type="text" placeholder="User Name" style={{ marginTop: '3vh' }}></input></p>
                         </div>
                         <div className={leftBottomLeft}>
                             <p>First Name:</p>
