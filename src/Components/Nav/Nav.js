@@ -13,6 +13,7 @@ class Nav extends Component {
     async componentDidMount() {
         const auth = localStorage.getItem('jwt-user-token');
         await this.props.authChecker(auth);
+        console.log(this.props.auth);
     }
 
     handleLogout = async () => {

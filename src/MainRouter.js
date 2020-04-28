@@ -38,6 +38,12 @@ export default class MainRouter extends Component {
                         </Switch>
                     </>
                 }
+
+                {window.screen.orientation.type === 'landscape-primary' && window.screen.orientation.angle === 90 &&
+                    <>
+                        <Route render={() => <h1 style={{ height: '100vh' }}>Mobile components in production. Please check back later!</h1>} />
+                    </>
+                }
             </>
         )
     }
