@@ -10,6 +10,11 @@ export default class News extends Component {
                 </div>
 
                 <div className={newsBottom}>
+                    <p><b>--- 29 April 2020 ---</b></p>
+                    <p style={{ marginTop: 0 }}>Burn it all down! Today was spent double checking code, final debugging, and cross t's and dotting i's on AWS. The final cherry on top for the project was to add SSL security certification to the site. After following the instructions provided, surprise surprise, it didn't work. It would come to my attention that the operating system on my AWS server had mysteriously updated to ver 20.2 instead of 18.04 that was originally installed. One would think this would not be a big deal, better in fact. Who doesn't want the latest version of something? THIS GUY! Some Google-ing taught me that a whoooooole bunch of other developers faced the same issue I was when their server's Ubuntu OS was updated to 20.X. What does that mean? Burn it all down and start again.</p>
+
+                    <p>It actually wasn't that bad. During our time learning AWS, we've done numerous practice labs building basic Virtual Private Cloud networks from scratch. It was actually good training, which I'm always down for. After the server was rebuilt and the site reloaded onto it, the SSL security certs were installed and things were good to go. Mike D. was able to find out why the server was auto updating. Thanks to him and his research, the auto-update code was corrected and things are looking good!</p>
+
                     <p><b>--- 27 April 2020 ---</b></p>
                     <p style={{ marginTop: 0 }}>Happy Live Day! Today, the ver 1.0 build of the site was deployed on AWS and went live today. However, one thing I learned about web development is that a project is never truly done. With the site up and out in the world. a Profile section was created that allows a user to view their account details and edit them if they wish.</p>
 
