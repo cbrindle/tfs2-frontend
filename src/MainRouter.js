@@ -11,6 +11,7 @@ const Signin = React.lazy(() => import('./Components/Signin/Signin'));
 const Game = React.lazy(() => import('./Components/Game/Game'));
 const Instructions = React.lazy(() => import('./Components/Game/Instructions'));
 const Profile = React.lazy(() => import('./Components/Game/Profile'));
+const Admin = React.lazy(() => import('./Components/Admin/Admin'));
 //
 
 //Mobile components lazy loading
@@ -33,6 +34,7 @@ export default class MainRouter extends Component {
                             <Route exact path="/game" component={Game} />
                             <Route exact path="/game/instructions" component={Instructions} />
                             <Route exact path="/game/profile" component={Profile} />
+                            <Route exact path="/game/admin" component={Admin} />
 
                             <Route render={() => <h1 style={{ height: '84vh' }}>Component Not found</h1>} />
                         </Switch>

@@ -17,6 +17,7 @@ class Game extends Component {
             this.props.history.push('/home');
         }
         await this.props.authChecker(auth);
+        console.log(this.props.auth);
     }
 
     homeRedirect = () => {
@@ -40,6 +41,9 @@ class Game extends Component {
                         <p className={gameLink} onClick={this.gameLaunch}>Launch Game</p>
                         <Link to="/game/instructions" className={gameLink}>Play Instructions</Link>
                         <Link to="/game/profile" className={gameLink}>Profile</Link>
+                        {this.props.auth.email === 'none' &&
+                            <Link to="/game/admin" className={gameLink}>Admin Dashboard</Link>
+                        }
                     </div>
 
                     <div className={menuRight}>
