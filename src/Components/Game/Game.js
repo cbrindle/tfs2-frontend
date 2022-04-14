@@ -17,7 +17,6 @@ class Game extends Component {
             this.props.history.push('/home');
         }
         await this.props.authChecker(auth);
-        console.log(this.props.auth);
     }
 
     homeRedirect = () => {

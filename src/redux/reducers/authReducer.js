@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, SIGNUP, AUTHCHECKER, GETPROFILE } from '../constants/authConstants';
+import { LOGIN, LOGOUT, SIGNUP, AUTHCHECKER } from '../constants/authConstants';
 
 const initialState = {
     isAuth: false,
@@ -39,12 +39,8 @@ export default function (state = initialState, action) {
                 name: action.payload.userName
             }
 
-        case GETPROFILE:
-            return {
-                ...state
-            }
-
         default:
+            console.log(`DEFAULT REDUCER`);
             return {
                 ...state
             }

@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 const Axios = axios.create({
-    baseURL: process.env.NODE_ENV === 'development' ? '' : '',
+    baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '',
     timeout: 5000,
-    crossdomain: true,
     headers: {
         'Access-Control-Allow-Origin': '*'
     }

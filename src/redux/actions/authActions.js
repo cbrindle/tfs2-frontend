@@ -96,3 +96,17 @@ export const updateProfile = (data) => async dispatch => {
         return err
     }
 }
+
+
+export const getAllUsers = () => async dispatch => {
+    try {
+        const allUsers = await Axios.get('/api/users/get-all-users');
+        dispatch({
+            type: '',
+            payload: ''
+        })
+        return allUsers.data;
+    } catch (err) {
+        return err
+    }
+}

@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import { css } from 'emotion';
 import Nav from '../Nav/Nav';
 
-import { authChecker } from '../../redux/actions/authActions';
+import { authChecker, getAllUsers } from '../../redux/actions/authActions';
 
 class Admin extends Component {
+
+    state = {
+        users: []
+    }
 
     async componentDidMount() {
         const auth = localStorage.getItem('jwt-user-token');
@@ -18,9 +22,13 @@ class Admin extends Component {
         }
     }
 
-    getAllUsers = async () => {
+    getUsers = async () => {
         try {
-
+            const allUsers = await this.props.getAllUsers();
+            console.log(allUsers);
+            this.setState({
+                users: allUsers
+            })
         } catch (err) {
             console.log(err);
         }
@@ -36,10 +44,17 @@ class Admin extends Component {
                 <Nav goHome={this.homeRedirect} />
                 <div className={main}>
                     <div className={adminLeft}>
-                        <button type="button">Get All Users</button>
+                        <button type="button" onClick={this.getUsers}>Get All Users</button>
                     </div>
                     <div className={adminRight}>
+                        <div className={rightTop}>
 
+                        </div>
+                        <div className={rightBottom}>
+                            {this.state.users.map(user => {
+                                return user.userName
+                            })}
+                        </div>
                     </div>
                 </div>
             </>
@@ -50,7 +65,7 @@ class Admin extends Component {
 const mapStateToProps = state => ({
     auth: state.authReducer
 })
-export default connect(mapStateToProps, { authChecker })(Admin)
+export default connect(mapStateToProps, { authChecker, getAllUsers })(Admin)
 
 
 const main = css`
@@ -68,8 +83,20 @@ const adminLeft = css`
     align-items: center;
 `
 const adminRight = css`
-    grid-area: 1 / 1 / span 1 / span 1;
+    grid-area: 1 / 2 / span 1 / span 1;
     display: grid;
     grid-template-rows: 20% 80%;
     columns: 100%;
+`
+const rightTop = css`
+    grid-area: 1 / 1 / span 1 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+const rightBottom = css`
+    grid-area: 2 / 1 / span 1 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
